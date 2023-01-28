@@ -5,8 +5,9 @@ namespace App\Models;
 use App\Traits\Relations\BelongsToClient;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Email extends Model
+class Appointment extends Model
 {
     use HasFactory, BelongsToClient;
 
@@ -16,11 +17,13 @@ class Email extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'label',
-        'email_address',
-        'position',
-        'city',
-        Client::class,
+        'name',
+        'url',
+        'client_id',
+        'address_id',
+        'start_date',
+        'end_date',
+        'note',
     ];
 
     /**
@@ -29,7 +32,15 @@ class Email extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'is_admin' => 'boolean',
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
     ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function address(): BelongsTo
+    {
+        return $this->belongsTo(Address::class);
+    }
 }

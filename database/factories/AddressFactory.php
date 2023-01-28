@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Address;
 use App\Models\Client;
+use App\Traits\Factories\HasClient;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AddressFactory extends Factory
 {
+    use HasClient;
     /**
      * Define the model's default state.
      *
@@ -18,7 +20,7 @@ class AddressFactory extends Factory
      */
     public function definition(): array
     {
-        $client = Client::query()->inRandomOrder()->first() ?? $client = Client::factory(1)->create()->first();
+        $client = $this->getClient();
 
         return [
             'label' => fake()->jobTitle(),
