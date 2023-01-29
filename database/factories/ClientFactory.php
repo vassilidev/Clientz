@@ -19,10 +19,10 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
-            'gender' => fake()->randomElement(GenderEnum::cases()),
-            'name' => fake()->firstName(),
+            'gender'  => fake()->randomElement(GenderEnum::cases()),
+            'name'    => fake()->firstName(),
             'surname' => fake()->lastName(),
-            'note' => fake()->realText(250),
+            'note'    => fake()->realText(250),
         ];
     }
 }

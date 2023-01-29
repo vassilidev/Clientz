@@ -32,6 +32,6 @@ class Address extends Model
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_admin' => 'boolean',
+        'is_admin'          => 'boolean',
     ];
 }

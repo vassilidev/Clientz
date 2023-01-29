@@ -12,7 +12,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('emails', function (Blueprint $table): void {
+        Schema::create('emails', static function (Blueprint $table) {
             $table->id();
             $table->string('label')->unique();
             $table->string('email_address');

@@ -19,7 +19,7 @@ class AppointmentSeeder extends Seeder
     {
         Client::all()->each(function (Client $client) {
             if (fake()->boolean(33)) {
-                $client->emails()->saveMany(Appointment::factory(random_int(1,3))->create(), ['position' => 1]);
+                $client->emails()->saveMany(Appointment::factory(random_int(1, 3))->create(), ['position' => 1]);
             }
         });
     }

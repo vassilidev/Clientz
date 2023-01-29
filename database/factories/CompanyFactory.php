@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class CompanyFactory extends Factory
 {
     use HasClient;
+
     /**
      * Define the model's default state.
      *
@@ -21,7 +22,7 @@ class CompanyFactory extends Factory
     {
         return [
             'company_name' => fake()->company(),
-            'logo_url' => fake()->imageUrl(),
+            'logo_url'     => fake()->imageUrl(),
         ];
     }
 }

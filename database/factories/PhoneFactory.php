@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class PhoneFactory extends Factory
 {
     use HasClient;
+
     /**
      * Define the model's default state.
      *
@@ -20,7 +21,7 @@ class PhoneFactory extends Factory
     public function definition(): array
     {
         return [
-            'label' => fake()->unique()->jobTitle(),
+            'label'        => fake()->unique()->jobTitle(),
             'phone_number' => fake()->unique()->phoneNumber(),
         ];
     }

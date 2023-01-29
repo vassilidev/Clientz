@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class AddressFactory extends Factory
 {
     use HasClient;
+
     /**
      * Define the model's default state.
      *
@@ -20,10 +21,10 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-            'label' => fake()->jobTitle(),
+            'label'          => fake()->jobTitle(),
             'street_address' => fake()->streetAddress(),
-            'zip_code' => fake()->postcode(),
-            'city' => fake()->city(),
+            'zip_code'       => fake()->postcode(),
+            'city'           => fake()->city(),
         ];
     }
 }

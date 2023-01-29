@@ -10,6 +10,7 @@ class AppointmentObserver
      * Handle the Appointment "created" event.
      *
      * @param Appointment $appointment
+     *
      * @return void
      */
     public function created(Appointment $appointment): void
@@ -22,6 +23,7 @@ class AppointmentObserver
      * Handle the Appointment "updated" event.
      *
      * @param Appointment $appointment
+     *
      * @return void
      */
     public function updated(Appointment $appointment): void

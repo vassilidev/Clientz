@@ -13,7 +13,7 @@ class Company extends Model
     /**
      * @return HasMany
      */
-    public function client (): HasMany
+    public function client(): HasMany
     {
         return $this->hasMany(Client::class);
     }

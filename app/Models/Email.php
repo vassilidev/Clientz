@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model
 {
-    use HasFactory,  MorphedByCompanies, MorphedByClient;
+    use HasFactory, MorphedByCompanies, MorphedByClient;
 
     /**
      * The attributes that are mass assignable.
@@ -30,6 +30,6 @@ class Email extends Model
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_admin' => 'boolean',
+        'is_admin'          => 'boolean',
     ];
 }

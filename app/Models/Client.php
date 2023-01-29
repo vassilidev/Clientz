@@ -23,7 +23,7 @@ class Client extends Model
         'name',
         'surname',
         'note',
-        'company_id'
+        'company_id',
     ];
 
     /**
