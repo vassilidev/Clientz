@@ -15,8 +15,8 @@ class AddressSeeder extends Seeder
      */
     public function run(): void
     {
-        Client::all()->each(function (Client $client) {
-            Address::factory()->create(['client_id' => $client->id]);
+        Client::all()->each(static function (Client $client) {
+            $client->addresses()->save(Address::factory()->create(), ['position' => 1]);
         });
     }
 }

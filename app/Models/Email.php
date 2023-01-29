@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use App\Traits\Relations\BelongsToClient;
+use App\Traits\Relations\MorphedByClient;
+use App\Traits\Relations\MorphedByCompanies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model
 {
-    use HasFactory, BelongsToClient;
+    use HasFactory,  MorphedByCompanies, MorphedByClient;
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +21,6 @@ class Email extends Model
         'email_address',
         'position',
         'city',
-        Client::class,
     ];
 
     /**

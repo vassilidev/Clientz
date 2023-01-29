@@ -14,10 +14,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('phones', function (Blueprint $table): void {
+        Schema::create('companies', static function (Blueprint $table): void {
             $table->id();
-            $table->string('label');
-            $table->string('phone_number');
+            $table->string('company_name');
+            $table->text('logo_url')->nullable();
+            $table->foreignIdFor(Client::class);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('phones');
+        Schema::dropIfExists('companies');
     }
 };

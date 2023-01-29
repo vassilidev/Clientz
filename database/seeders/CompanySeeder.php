@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Appointment;
 use App\Models\Client;
+use App\Models\Company;
 use Exception;
 use Illuminate\Database\Seeder;
 
-class AppointmentSeeder extends Seeder
+class CompanySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,8 +18,8 @@ class AppointmentSeeder extends Seeder
     public function run(): void
     {
         Client::all()->each(function (Client $client) {
-            if (fake()->boolean(33)) {
-                $client->emails()->saveMany(Appointment::factory(random_int(1,3))->create(), ['position' => 1]);
+            if (fake()->boolean()) {
+                Company::factory()->create(['client_id' => $client->id]);
             }
         });
     }

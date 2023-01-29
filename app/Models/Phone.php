@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use App\Traits\Relations\BelongsToClient;
+use App\Traits\Relations\MorphedByClient;
+use App\Traits\Relations\MorphedByCompanies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Phone extends Model
 {
-    use HasFactory, BelongsToClient;
+    use HasFactory, MorphedByClient, MorphedByCompanies;
 
     /**
      * The attributes that are mass assignable.

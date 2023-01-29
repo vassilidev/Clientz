@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Address;
-use App\Models\Client;
 use App\Traits\Factories\HasClient;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,15 +19,11 @@ class AddressFactory extends Factory
      */
     public function definition(): array
     {
-        $client = $this->getClient();
-
         return [
             'label' => fake()->jobTitle(),
             'street_address' => fake()->streetAddress(),
             'zip_code' => fake()->postcode(),
             'city' => fake()->city(),
-            'position' => $client->addresses()->max('position') + 1,
-            'client_id' => $client->id,
         ];
     }
 }

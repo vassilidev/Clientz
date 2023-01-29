@@ -6,7 +6,8 @@ use App\Enums\Client\GenderEnum;
 use App\Traits\Relations\HasAppointments;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Client extends Model
 {
@@ -21,8 +22,8 @@ class Client extends Model
         'gender',
         'name',
         'surname',
-        'company',
         'note',
+        'company_id'
     ];
 
     /**
@@ -35,26 +36,52 @@ class Client extends Model
     ];
 
     /**
-     * @return HasMany
+     * @return MorphToMany
      */
-    public function emails(): HasMany
+    public function emails(): MorphToMany
     {
-        return $this->hasMany(Email::class);
+        return $this->morphToMany(
+            Email::class,
+            'ownable',
+            'emailables'
+        )
+            ->withTimestamps()
+            ->withPivot(['position']);
     }
 
     /**
-     * @return HasMany
+     * @return MorphToMany
      */
-    public function phones(): HasMany
+    public function phones(): MorphToMany
     {
-        return $this->hasMany(Phone::class);
+        return $this->morphToMany(
+            Phone::class,
+            'ownable',
+            'phonables'
+        )
+            ->withTimestamps()
+            ->withPivot(['position']);
     }
 
     /**
-     * @return HasMany
+     * @return MorphToMany
      */
-    public function addresses(): HasMany
+    public function addresses(): MorphToMany
     {
-        return $this->hasMany(Address::class);
+        return $this->morphToMany(
+            Address::class,
+            'ownable',
+            'addressables'
+        )
+            ->withTimestamps()
+            ->withPivot(['position']);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
     }
 }

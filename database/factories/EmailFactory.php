@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Client;
 use App\Models\Email;
 use App\Traits\Factories\HasClient;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -20,13 +19,9 @@ class EmailFactory extends Factory
      */
     public function definition(): array
     {
-        $client = $this->getClient();
-
         return [
-            'label' => fake()->jobTitle(),
-            'email_address' => fake()->companyEmail(),
-            'position' => $client->emails()->max('position') + 1,
-            'client_id' => $client->id,
+            'label' => fake()->unique()->jobTitle(),
+            'email_address' => fake()->unique()->companyEmail(),
         ];
     }
 }

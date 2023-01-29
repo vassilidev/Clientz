@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Phone;
+use App\Models\Company;
 use App\Traits\Factories\HasClient;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Phone>
+ * @extends Factory<Company>
  */
-class PhoneFactory extends Factory
+class CompanyFactory extends Factory
 {
     use HasClient;
     /**
@@ -20,8 +20,8 @@ class PhoneFactory extends Factory
     public function definition(): array
     {
         return [
-            'label' => fake()->unique()->jobTitle(),
-            'phone_number' => fake()->unique()->phoneNumber(),
+            'company_name' => fake()->company(),
+            'logo_url' => fake()->imageUrl(),
         ];
     }
 }

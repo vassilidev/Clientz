@@ -18,7 +18,7 @@ class PhoneSeeder extends Seeder
     public function run(): void
     {
         Client::all()->each(function (Client $client) {
-            Phone::factory(random_int(1,2))->create(['client_id' => $client->id]);
+            $client->phones()->saveMany(Phone::factory(random_int(1,2))->create(), ['position' => 1]);
         });
     }
 }

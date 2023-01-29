@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Client;
+use App\Models\Phone;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,10 +14,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('phones', function (Blueprint $table): void {
+        Schema::create('phonables', static function (Blueprint $table): void {
             $table->id();
-            $table->string('label');
-            $table->string('phone_number');
+            $table->foreignIdFor(Phone::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->morphs('ownable');
+            $table->bigInteger('position')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('phones');
+        Schema::dropIfExists('phonables');
     }
 };

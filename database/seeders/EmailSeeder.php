@@ -18,7 +18,7 @@ class EmailSeeder extends Seeder
     public function run(): void
     {
         Client::all()->each(function (Client $client) {
-            Email::factory(random_int(1, 3))->create(['client_id' => $client->id]);
+            $client->emails()->saveMany(Email::factory(random_int(1,3))->create(), ['position' => 1]);
         });
     }
 }

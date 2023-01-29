@@ -22,7 +22,6 @@ class ClientFactory extends Factory
             'gender' => fake()->randomElement(GenderEnum::cases()),
             'name' => fake()->firstName(),
             'surname' => fake()->lastName(),
-            'company' => fake()->company(),
             'note' => fake()->realText(250),
         ];
     }

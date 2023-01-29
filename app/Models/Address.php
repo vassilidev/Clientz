@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use App\Traits\Relations\BelongsToClient;
 use App\Traits\Relations\HasAppointments;
+use App\Traits\Relations\MorphedByClient;
+use App\Traits\Relations\MorphedByCompanies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
-    use HasFactory, HasAppointments, BelongsToClient;
+    use HasFactory, HasAppointments, MorphedByCompanies, MorphedByClient;
 
     /**
      * The attributes that are mass assignable.
@@ -33,5 +34,4 @@ class Address extends Model
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean',
     ];
-
 }
