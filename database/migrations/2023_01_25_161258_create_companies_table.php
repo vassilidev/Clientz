@@ -17,7 +17,6 @@ return new class extends Migration {
             $table->id();
             $table->string('company_name');
             $table->text('logo_url')->nullable();
-            $table->foreignIdFor(Client::class);
             $table->timestamps();
         });
     }

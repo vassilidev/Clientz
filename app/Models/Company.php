@@ -11,6 +11,14 @@ class Company extends Model
     use HasFactory;
 
     /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'company_name',
+        'logo_url',
+    ];
+
+    /**
      * @return HasMany
      */
     public function client(): HasMany

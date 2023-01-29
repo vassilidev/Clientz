@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Company;
-use App\Traits\Factories\HasClient;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -11,8 +10,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CompanyFactory extends Factory
 {
-    use HasClient;
-
     /**
      * Define the model's default state.
      *

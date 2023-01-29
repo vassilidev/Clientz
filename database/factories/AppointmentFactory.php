@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Address;
 use App\Models\Appointment;
-use App\Traits\Factories\HasAddress;
-use App\Traits\Factories\HasClient;
+use App\Models\Client;
+use App\Traits\Factories\HasModel;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AppointmentFactory extends Factory
 {
-    use HasClient, HasAddress;
+    use HasModel;
 
     /**
      * Define the model's default state.
@@ -24,9 +25,9 @@ class AppointmentFactory extends Factory
      */
     public function definition(): array
     {
-        $client = $this->getClient();
+        $client = $this->getModel(Client::class);
         $hasAddress = fake()->boolean(80);
-        $address = $hasAddress ? $this->getAddress() : null;
+        $address = $hasAddress ? $this->getModel(Address::class) : null;
         $startDate = fake()->dateTimeThisMonth();
 
         return [
