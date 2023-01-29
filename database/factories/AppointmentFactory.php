@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\appointment;
+use App\Models\Appointment;
 use App\Traits\Factories\HasAddress;
 use App\Traits\Factories\HasClient;
 use Carbon\Carbon;
@@ -10,7 +10,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<appointment>
+ * @extends Factory<Appointment>
  */
 class AppointmentFactory extends Factory
 {
