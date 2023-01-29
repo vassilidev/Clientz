@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\Relations\HasMany\HasManyClients;
+use App\Traits\Relations\MorphTo\Addressable;
+use App\Traits\Relations\MorphTo\Emailable;
+use App\Traits\Relations\MorphTo\Phonable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Company extends Model
 {
-    use HasFactory;
+    use HasFactory, Phonable, Emailable, Addressable, HasManyClients;
 
     /**
      * @var string[]
@@ -17,12 +20,4 @@ class Company extends Model
         'company_name',
         'logo_url',
     ];
-
-    /**
-     * @return HasMany
-     */
-    public function client(): HasMany
-    {
-        return $this->hasMany(Client::class);
-    }
 }

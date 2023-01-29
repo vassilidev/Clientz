@@ -2,18 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\Relations\BelongsTo\BelongsToAddress;
+use App\Traits\Relations\BelongsTo\BelongsToClient;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Appointment extends Model
 {
-    use HasFactory;
+    use HasFactory, BelongsToClient, BelongsToAddress;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
+     * @var string[]
      */
     protected $fillable = [
         'name',
@@ -26,20 +25,10 @@ class Appointment extends Model
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
+     * @var string[]
      */
     protected $casts = [
         'start_date' => 'datetime',
         'end_date'   => 'datetime',
     ];
-
-    /**
-     * @return BelongsTo
-     */
-    public function address(): BelongsTo
-    {
-        return $this->belongsTo(Address::class);
-    }
 }

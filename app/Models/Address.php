@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
-use App\Traits\Relations\HasAppointments;
-use App\Traits\Relations\MorphedByClient;
-use App\Traits\Relations\MorphedByCompanies;
+use App\Traits\Relations\HasMany\HasManyAppointments;
+use App\Traits\Relations\MorphTo\MorphedByClient;
+use App\Traits\Relations\MorphTo\MorphedByCompanies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
-    use HasFactory, HasAppointments, MorphedByCompanies, MorphedByClient;
+    use HasFactory, HasManyAppointments, MorphedByCompanies, MorphedByClient;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
+     * @var string[]
      */
     protected $fillable = [
         'label',
@@ -26,9 +24,7 @@ class Address extends Model
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
+     * @var string[]
      */
     protected $casts = [
         'email_verified_at' => 'datetime',

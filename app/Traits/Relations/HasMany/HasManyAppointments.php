@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Traits\Relations;
+namespace App\Traits\Relations\HasMany;
 
 use App\Models\Appointment;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-trait HasAppointments
+trait HasManyAppointments
 {
     /**
      * @return HasMany<Appointment>
