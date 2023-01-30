@@ -14,8 +14,9 @@ return new class extends Migration {
     {
         Schema::create('emails', static function (Blueprint $table) {
             $table->id();
-            $table->string('label')->unique();
+            $table->string('label');
             $table->string('email_address');
+            $table->unique(['label','email_address']);
             $table->timestamps();
         });
     }

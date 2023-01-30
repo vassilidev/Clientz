@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Client\GenderEnum;
 use App\Models\Company;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,8 +16,7 @@ return new class extends Migration {
     {
         Schema::create('clients', static function (Blueprint $table) {
             $table->id();
-            /** @see \App\Enums\Client\GenderEnum */
-            $table->string('gender');
+            $table->enum('gender', array_column(GenderEnum::cases(), 'value'));
             $table->string('name');
             $table->string('surname');
             $table->longText('note');

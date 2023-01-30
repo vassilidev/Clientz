@@ -16,7 +16,7 @@ class AppointmentObserver
     public function created(Appointment $appointment): void
     {
         $appointment->end_date_event = $appointment->end_date->addDay();
-        $appointment->save();
+        $appointment->saveQuietly();
     }
 
     /**
@@ -30,7 +30,12 @@ class AppointmentObserver
     {
         if ($appointment->getOriginal('end_date') !== $appointment->end_date) {
             $appointment->end_date_event = $appointment->end_date->addDay();
-            $appointment->saveQuietly();
         }
+
+        if (!is_null($appointment->total_amount) && is_null($appointment->getOriginal('total_amount'))) {
+            $appointment->due_amount = $appointment->total_amount;
+        }
+
+        $appointment->saveQuietly();
     }
 }

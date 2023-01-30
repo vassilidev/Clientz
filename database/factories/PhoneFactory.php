@@ -18,8 +18,8 @@ class PhoneFactory extends Factory
     public function definition(): array
     {
         return [
-            'label'        => fake()->unique()->jobTitle(),
-            'phone_number' => fake()->unique()->phoneNumber(),
+            'label'        => fake()->jobTitle(),
+            'phone_number' => fake()->phoneNumber(),
         ];
     }
 }

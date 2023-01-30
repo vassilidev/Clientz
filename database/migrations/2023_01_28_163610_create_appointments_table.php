@@ -20,6 +20,8 @@ return new class extends Migration {
             $table->string('url')->nullable();
             $table->foreignIdFor(Client::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignIdFor(Address::class)->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->integer('total_amount')->nullable();
+            $table->integer('due_amount')->nullable();
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->dateTime('end_date_event')->nullable();

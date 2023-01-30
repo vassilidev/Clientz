@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Email;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends Factory<Email>
@@ -18,8 +19,8 @@ class EmailFactory extends Factory
     public function definition(): array
     {
         return [
-            'label'         => fake()->unique()->jobTitle(),
-            'email_address' => fake()->unique()->companyEmail(),
+            'label'         => fake()->jobTitle(),
+            'email_address' => Str::random(10).'@'.fake()->freeEmailDomain(),
         ];
     }
 }

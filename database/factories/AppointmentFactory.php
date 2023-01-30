@@ -31,13 +31,14 @@ class AppointmentFactory extends Factory
         $startDate = fake()->dateTimeThisMonth();
 
         return [
-            'name'       => fake()->jobTitle,
-            'url'        => (!$hasAddress ? fake()->url : null),
-            'client_id'  => $client->id,
+            'name' => fake()->jobTitle,
+            'url' => (!$hasAddress ? fake()->url : null),
+            'client_id' => $client->id,
             'address_id' => $address?->id,
+            'total_amount' =>  fake()->boolean() ?  fake()->randomNumber(3) : null,
             'start_date' => $startDate,
-            'end_date'   => Carbon::parse($startDate)->addHours(random_int(1, 7)),
-            'note'       => fake()->realText(),
+            'end_date' => Carbon::parse($startDate)->addHours(random_int(1, 7)),
+            'note' => fake()->realText(),
         ];
     }
 }

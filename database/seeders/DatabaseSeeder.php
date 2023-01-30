@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             EmailSeeder::class,
             PhoneSeeder::class,
             AppointmentSeeder::class,
+            TransactionSeeder::class,
         ]);
     }
 }
