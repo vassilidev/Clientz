@@ -1,0 +1,104 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\Panel\Model\$ModelRequest;
+use App\Models\$Model;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+
+class $ModelController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return View
+     */
+    public function index(): View
+    {
+        return view('pages.panel.$models.index$Model');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return View
+     */
+    public function create(): View
+    {
+        return view('pages.panel.$models.create$Model');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param $ModelRequest $request
+     *
+     * @return RedirectResponse
+     */
+    public function store($ModelRequest $request): RedirectResponse
+    {
+        $$model = $Model::create($request->validated());
+
+        toast(__('crud.messages.create', ['model' => __('model.$model')]), 'success');
+
+        return redirect()->route('panel.$model.show', $$model);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param $Model $$model
+     *
+     * @return View
+     */
+    public function show($Model $$model): View
+    {
+        return view('pages.panel.$models.show$Model', compact('$model'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param $Model $$model
+     *
+     * @return View
+     */
+    public function edit($Model $$model): View
+    {
+        return view('pages.panel.$models.edit$Model', compact('$model'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param $ModelRequest $request
+     * @param $Model        $$model
+     *
+     * @return RedirectResponse
+     */
+    public function update($ModelRequest $request, $Model $$model): RedirectResponse
+    {
+        $$model->update($request->validated());
+
+        toast(__('crud.messages.update', ['model' => __('model.$model')]));
+
+        return redirect()->route('panel.$model.show', compact('$model'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param $Model $$model
+     *
+     * @return RedirectResponse
+     */
+    public function destroy($Model $$model): RedirectResponse
+    {
+        $$model->delete();
+
+        toast(__('crud.messages.delete', ['model' => __('model.$model')]));
+
+        return redirect()->route('panel.$model.index');
+    }
+}

@@ -7,11 +7,14 @@ enum GenderEnum: string
     case MR = 'mr';
     case MME = 'mme';
 
-    public function getGender(): string
+    /**
+     * @return string
+     */
+    public function getLong(): string
     {
         return match ($this) {
-            self::MR => __('generic.gender.mr'),
-            self::MME => __('generic.gender.mme'),
+            self::MR => __('generic.gender.mr.long'),
+            self::MME => __('generic.gender.mme.long'),
         };
     }
 }

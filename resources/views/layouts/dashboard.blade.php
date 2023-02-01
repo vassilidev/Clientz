@@ -7,6 +7,7 @@
     <meta name="description" content="Laravel 9 Admin Starter Kit"/>
     <meta name="author" content="Vassili JOFFROY (@vassilidev)"/>
     <title>@yield('title', config('app.name'))</title>
+    <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet"/>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
           integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -29,6 +30,7 @@
 @include('sweetalert::alert')
 <script src="{{ asset('vendor/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/scripts.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
 @stack('js')
 </body>
 </html>

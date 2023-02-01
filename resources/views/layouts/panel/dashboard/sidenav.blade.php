@@ -5,7 +5,14 @@
                 <div class="nav-link-icon">
                     <i class="fas fa-house"></i>
                 </div>
-                {{ __('Home') }}
+                {{ __('generic.home') }}
+            </a>
+
+            <a class="nav-link" href="{{ route('panel.dashboard') }}">
+                <div class="nav-link-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                {{ __('generic.client') }}
             </a>
         </div>
     </div>
