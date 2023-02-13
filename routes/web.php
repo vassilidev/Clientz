@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +20,11 @@ Route::group([
 ], static function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
-    Route::resource('client', ClientController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('transactions', TransactionController::class);
+    Route::resource('appointments', AppointmentController::class);
+    Route::post('/appointments/{appointment}/charge', [TransactionController::class, 'charge'])->name('appointments.charge');
+
 
     Route::post('/test', static function () {
         $dates = explode(' - ', request()->get('toto'));

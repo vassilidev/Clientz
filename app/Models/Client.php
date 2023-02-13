@@ -10,10 +10,17 @@ use App\Traits\Relations\MorphTo\Emailable;
 use App\Traits\Relations\MorphTo\Phonable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Cashier\Billable;
 
 class Client extends Model
 {
-    use HasFactory, HasManyAppointments, BelongsToCompany, Phonable, Emailable, Addressable;
+    use HasFactory,
+        HasManyAppointments,
+        BelongsToCompany,
+        Phonable,
+        Emailable,
+        Addressable,
+        Billable;
 
     /**
      * @var string[]

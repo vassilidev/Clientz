@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('surname');
             $table->longText('note');
+            $table->string('stripe_id')->nullable();
             $table->foreignIdFor(Company::class)->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

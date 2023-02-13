@@ -8,11 +8,11 @@
                 {{ __('generic.home') }}
             </a>
 
-            <a class="nav-link" href="{{ route('panel.dashboard') }}">
+            <a class="nav-link" href="{{ route('panel.transactions.index') }}">
                 <div class="nav-link-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                {{ __('generic.client') }}
+                {{ __('generic.transactions') }}
             </a>
         </div>
     </div>
